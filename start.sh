@@ -15,6 +15,11 @@ if [ ! -f "/app/index.php" ]; then
 fi
 
 echo "✅ index.php found"
+
+echo "🗄️  Running database initialisation..."
+php /app/init-db.php
+echo "✅ Database initialisation complete"
+
 echo "📝 Starting PHP built-in server..."
 
 # Start PHP built-in server with proper address binding
