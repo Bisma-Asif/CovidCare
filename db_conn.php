@@ -1,18 +1,27 @@
 <?php
 // Get database configuration from environment variables
-$servername = getenv('MYSQLHOST') ?: 'localhost';
-$username   = getenv('MYSQLUSER') ?: 'root';
-$password   = getenv('MYSQLPASSWORD') ?: '';
-$dbname     = getenv('MYSQLDATABASE') ?: 'covidcare';
+$servername = getenv('MYSQLHOST') ?: false;
+$username   = getenv('MYSQLUSER') ?: false;
+$password   = getenv('MYSQLPASSWORD') ?: false;
+$dbname     = getenv('MYSQLDATABASE') ?: false;
 $port       = getenv('MYSQLPORT') ?: 3306;
 
-// Suppress connection warnings during initial load
-$db_conn = @new mysqli($servername, $username, $password, $dbname, $port);
+$db_conn = null;
 
-// Check connection with proper error handling
-if ($db_conn->connect_error) {
-    // Log the error but don't die - allow static pages to load
-    error_log("Database Connection Error: " . $db_conn->connect_error);
-    // For static HTML pages, this is not critical
+// Only attempt connection if environment variables are set
+if ($servername && $username !== false) {
+    try {
+        $db_conn = new mysqli($servername, $username, $password, $dbname, $port);
+        
+        if ($db_conn->connect_error) {
+            error_log("Database Connection Error: " . $db_conn->connect_error);
+            $db_conn = null;
+        }
+    } catch (Exception $e) {
+        error_log("Database Exception: " . $e->getMessage());
+        $db_conn = null;
+    }
+} else {
+    error_log("Database credentials not configured in environment variables");
 }
 ?>

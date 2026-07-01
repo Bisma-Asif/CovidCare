@@ -7,8 +7,13 @@ $login_error = '';
 $hospital_success = '';
 $patient_success = '';
 
+// Check if database is connected
+if (!$db_conn) {
+    $login_error = 'Database connection error. Please try again later.';
+}
+
 // ------------------ LOGIN PROCESSING ------------------
-if ( isset( $_POST[ 'login_submit' ] ) ) {
+if ( isset( $_POST[ 'login_submit' ] ) && $db_conn ) {
     $email = strtolower( trim( $_POST[ 'email' ] ) );
     $password = $_POST[ 'password' ];
 
