@@ -6,7 +6,7 @@ if [ -z "$PORT" ]; then
     PORT=8080
 fi
 
-echo "🚀 Starting PHP application on 0.0.0.0:$PORT..."
+echo "🚀 Starting CovidCare application..."
 
 # Check if index.php exists
 if [ ! -f "/app/index.php" ]; then
@@ -15,7 +15,12 @@ if [ ! -f "/app/index.php" ]; then
 fi
 
 echo "✅ index.php found"
-echo "📝 Starting PHP built-in server..."
+
+# Run database initialization
+echo "📊 Initializing database..."
+php /app/init-db.php
 
 # Start PHP built-in server with proper address binding
+echo "📝 Starting PHP built-in server on 0.0.0.0:$PORT..."
 exec php -S 0.0.0.0:$PORT -t /app 2>&1
+
