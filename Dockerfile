@@ -8,8 +8,12 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql
 # Copy application files
 COPY . .
 
+# Copy startup script
+COPY start.sh /app/start.sh
+RUN chmod +x /app/start.sh
+
 # Expose port
 EXPOSE 8080
 
 # Start PHP server
-CMD php -S 0.0.0.0:${PORT:-8080}
+CMD ["bash", "start.sh"]
