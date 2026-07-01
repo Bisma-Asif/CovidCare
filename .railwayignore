@@ -1,0 +1,11 @@
+node_modules/
+.git/
+.gitignore
+README.md
+.env.example
+*.md
+Documentation/
+img/blog/
+img/flicker/
+tcpdf/CHANGELOG.TXT
+tcpdf/LICENSE.TXT

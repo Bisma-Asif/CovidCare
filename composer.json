@@ -1,0 +1,11 @@
+{
+  "name": "covidcare/app",
+  "description": "COVID-19 Testing, Vaccination & Treatment Management System",
+  "type": "project",
+  "require": {
+    "php": "^8.0"
+  },
+  "require-dev": {
+    "composer/installers": "^2.0"
+  }
+}
