@@ -68,7 +68,7 @@ if ( isset( $_POST[ 'login_submit' ] ) && $db_conn ) {
 }
 
 // ------------------ HOSPITAL REGISTER ------------------
-if (isset($_POST['hospital_submit'])) {
+if (isset($_POST['hospital_submit']) && $db_conn) {
     // Collect form data
     $h_firstname = trim($_POST['h_firstName']);
     $h_lastname = trim($_POST['h_lastName']);
@@ -147,7 +147,7 @@ if (isset($_POST['hospital_submit'])) {
 }
 
 // ------------------ PATIENT REGISTER ------------------
-if (isset($_POST['patient_submit'])) {
+if (isset($_POST['patient_submit']) && $db_conn) {
     // Collect form data
     $p_firstname = trim($_POST['p_firstName']);
     $p_lastname = trim($_POST['p_lastName']);
@@ -321,6 +321,9 @@ required>
 <h2>Hospital Registration</h2>
 <p>Register your hospital with CovidCare</p>
 </div>
+<?php if (!empty($login_error) && !$db_conn): ?>
+<div class='error-message' style='display:block; margin-bottom:15px;'><?php echo $login_error; ?></div>
+<?php endif; ?>
 <div class='form-content'>
 <div class='form-row'>
 <div class='form-group'>
@@ -383,7 +386,10 @@ required>
 <div class='form-footer'>
 <div class='success-message' id='hospital-success' style='display:none;
         '>Hospital account created successfully! Waiting for admin approval.</div>
-<button type='submit' name='hospital_submit' class='auth-btn'>Create Hospital Account</button>
+<button type='submit' name='hospital_submit' class='auth-btn' <?php echo !$db_conn ? 'disabled title="Database not connected. Please check /health.php for status."' : ''; ?>>Create Hospital Account</button>
+<?php if (!$db_conn): ?>
+<p style='color: #dc3545; font-size: 12px; margin-top: 10px;'>⚠️ Database not connected. Registration temporarily unavailable.</p>
+<?php endif; ?>
 </div>
 </form>
 
@@ -393,6 +399,9 @@ required>
 <h2>Patient Registration</h2>
 <p>Create your patient account with CovidCare</p>
 </div>
+<?php if (!empty($login_error) && !$db_conn): ?>
+<div class='error-message' style='display:block; margin-bottom:15px;'><?php echo $login_error; ?></div>
+<?php endif; ?>
 <div class='form-content'>
 <div class='form-row'>
 <div class='form-group'>
@@ -471,7 +480,10 @@ required>
 <div class='form-footer'>
 <div class='success-message' id='patient-success' style='display:none;
         '>Patient account created successfully! You can now login.</div>
-<button type='submit' name='patient_submit' class='auth-btn'>Create Patient Account</button>
+<button type='submit' name='patient_submit' class='auth-btn' <?php echo !$db_conn ? 'disabled title="Database not connected. Please check /health.php for status."' : ''; ?>>Create Patient Account</button>
+<?php if (!$db_conn): ?>
+<p style='color: #dc3545; font-size: 12px; margin-top: 10px;'>⚠️ Database not connected. Registration temporarily unavailable.</p>
+<?php endif; ?>
 </div>
 </form>
 </div>
