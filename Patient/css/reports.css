@@ -1,0 +1,495 @@
+.content{
+        margin: 0px 20px;
+    }
+
+    /* Reports Container */
+    .reports-container {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      border: 1px solid var(--border);
+      margin: 20px auto;
+      max-width: 1300px;
+      animation: fadeInScale 0.6s ease;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 25px;
+      border-bottom: 2px solid var(--border-light);
+    }
+
+    .page-title {
+      font-size: 32px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 15px;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .page-subtitle {
+      color: var(--text-muted);
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+        .controls-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    .date-filter {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .date-filter label {
+        font-weight: 600;
+        color: var(--text-color);
+        white-space: nowrap;
+    }
+    
+    .date-filter input {
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+    
+    .date-filter button {
+        padding: 8px 15px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 500;
+    }
+    
+    .date-filter button:hover {
+        background-color: var(--primary-dark);
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+      background: var(--bg-secondary);
+      padding: 0px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+
+    .filter-tab {
+      padding: 14px 28px;
+      border: none;
+      border-radius: 10px;
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      font-weight: 600;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .filter-tab::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--accent-2), var(--accent));
+      transition: left 0.3s ease;
+      z-index: 1;
+    }
+
+    .filter-tab.active::before {
+      left: 0;
+    }
+
+    .filter-tab.active {
+      color: white;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      transform: translateY(-2px);
+    }
+
+    .filter-tab:hover:not(.active) {
+      background: var(--hover);
+      transform: translateY(-1px);
+    }
+
+    .filter-tab span {
+      position: relative;
+      z-index: 2;
+    }
+
+    .filter-tab i {
+      position: relative;
+      z-index: 2;
+      font-size: 16px;
+    }
+
+    /* Report Cards */
+    .reports-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      gap: 25px;
+      margin-top: 10px;
+    }
+
+    .report-card {
+      background: linear-gradient(135deg, var(--card) 0%, var(--card-alt) 100%);
+      border-radius: 20px;
+      padding: 0;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      border: 1px solid var(--border-light);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .report-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      border-color: var(--accent);
+    }
+
+    .card-header {
+      background: linear-gradient(135deg, var(--accent-2), var(--accent));
+      padding: 20px;
+      color: white;
+      position: relative;
+    }
+
+    .card-header::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background: linear-gradient(135deg, var(--accent-2), var(--accent));
+      clip-path: polygon(0 0, 100% 0, 100% 20%, 50% 100%, 0 20%);
+      opacity: 0.1;
+    }
+
+    .hospital-name {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0 0 5px 0;
+      color: white;
+    }
+
+    .hospital-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    .hospital-info i {
+      font-size: 12px;
+    }
+
+    .test-type-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .badge-covid {
+      background: #ff6b6b;
+      color: white;
+    }
+
+    .badge-vaccine {
+      background: #4ecdc4;
+      color: white;
+    }
+
+    .card-body {
+      padding: 25px;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .detail-item {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .detail-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .detail-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .detail-value i {
+      color: var(--accent);
+      font-size: 14px;
+      width: 16px;
+    }
+
+    .result-section {
+      text-align: center;
+      margin: 25px 0;
+      padding: 20px;
+      border-radius: 12px;
+      background: var(--bg-secondary);
+    }
+
+    .result-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .result-value {
+      font-size: 24px;
+      font-weight: 800;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 10px 0;
+    }
+
+    .result-positive {
+      background: linear-gradient(135deg, #ffebee, #ffcdd2);
+      color: #c62828;
+      border: 2px solid #c62828;
+    }
+
+    .result-negative {
+      background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+      color: #2e7d32;
+      border: 2px solid #2e7d32;
+    }
+
+    .result-vaccinated {
+      background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+      color: #1565c0;
+      border: 2px solid #1565c0;
+    }
+
+    .result-message {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+
+    .card-footer {
+      padding: 20px;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .report-id {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .download-btn {
+      padding: 10px 20px;
+      background: linear-gradient(135deg, var(--accent-2), var(--accent));
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--muted);
+      grid-column: 1 / -1;
+    }
+
+    .no-results i {
+      font-size: 72px;
+      margin-bottom: 20px;
+      opacity: 0.3;
+      color: var(--accent);
+    }
+
+    .no-results h3 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .no-results p {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 400px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .report-card {
+      animation: slideIn 0.6s ease forwards;
+    }
+
+    .report-card:nth-child(1) { animation-delay: 0.1s; }
+    .report-card:nth-child(2) { animation-delay: 0.2s; }
+    .report-card:nth-child(3) { animation-delay: 0.3s; }
+    .report-card:nth-child(4) { animation-delay: 0.4s; }
+    .report-card:nth-child(5) { animation-delay: 0.5s; }
+
+    /* Responsive design */
+    @media (max-width: 1024px) {
+      .reports-grid {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .reports-container {
+        padding: 20px;
+        margin: 10px;
+        border-radius: 12px;
+      }
+      
+      .filter-tabs {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+      }
+      
+      .filter-tab {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .reports-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .page-title {
+        font-size: 26px;
+      }
+      
+      .detail-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      
+      .card-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-title {
+        font-size: 22px;
+      }
+      
+      .card-body {
+        padding: 20px;
+      }
+      
+      .card-header {
+        padding: 15px;
+      }
+      
+      .hospital-name {
+        font-size: 18px;
+      }
+      
+      .test-type-badge {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-top: 10px;
+        display: inline-block;
+      }
+      
+      .result-value {
+        font-size: 20px;
+        padding: 12px;
+      }
+    }

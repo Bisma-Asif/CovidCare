@@ -1,0 +1,337 @@
+/* --------------------Header + Sidebar Styles-------------------- */
+    /* Basic Styles*/
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --muted: #64748b;
+      --logo: #0f766e;
+      --text: #0f172a;
+      --accent: #0d9488;
+      --accent-2: #14b8a6;
+      --border: #e2e8f0;
+      --radius: 12px;
+      --glass: rgba(255,255,255,0.6);
+      --primary-600: #0d9488;
+      --primary-700: #0f766e;
+      --success: #10b981;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --nav: linear-gradient(90deg, rgba(13,148,136,0.12), rgba(15,118,110,0.08));
+    }
+    .dark {
+      --bg: #0e1117;
+      --card: #0f1724;
+      --muted: #94a3b8;
+      --logo: #e6eef6;
+      --text: #e6eef6;
+      --accent: #00B092;
+      --accent-2: #06b6d4;
+      --border: rgba(255,255,255,0.06);
+      --glass: rgba(255,255,255,0.03);
+      --primary-600: #14b8a6;
+      --primary-700: #0d9488;
+      --success: #34d399;
+      --danger: #f87171;
+      --warning: #fbbf24;
+      --nav:  #0e1117;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; 
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: var(--bg); 
+      color: var(--text); 
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+    /* Overlay for mobile */
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000; /* Increased from 999 to 1000 */
+    }
+    
+    /* layout */
+    .layout {
+      display: grid; 
+      grid-template-columns: 256px 1fr; 
+      min-height: 100vh;
+    }
+    .sidebar {
+      background: var(--card); 
+      border-right: 1px solid var(--border);
+      padding: 20px; 
+      position: sticky; 
+      top: 0; 
+      height: 100vh;
+      transition: background-color 0.4s ease, color 0.4s ease;
+      z-index: 1001; /* Increased from 1000 to 1001 to be above overlay */
+    }
+    .sidebar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .brand {
+      display: flex; 
+      align-items: center; 
+      gap: 12px;
+    }
+    .logo-icon {
+      width: 40px; 
+      height: 40px; 
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent-2), var(--accent));
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      color: #fff; 
+      font-weight: 700;
+      font-size: 20px;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+       animation: rotateIn 1s ease;
+    }
+    @keyframes rotateIn {
+    from {
+        opacity: 0;
+        transform: rotate(-180deg) scale(0.3);
+    }
+
+    to {
+        opacity: 1;
+        transform: rotate(0) scale(1);
+    }
+}
+    
+    .nav-section {
+      margin-top: 14px;
+    }
+    .nav-title {
+      font-size: 12px; 
+      color: var(--muted); 
+      text-transform: uppercase; 
+      margin-bottom: 10px; 
+      letter-spacing: .08em;
+    }
+    .brand .title {
+    font-size: 20px;
+    font-weight: 750;
+    color: var(--logo);
+    animation: fadeIn 1s ease 0.2s both;
+}
+.small {
+      font-size: 12px; 
+      color: var(--muted); 
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      animation: fadeInUp 1s ease 0.2s both;
+    }
+    @keyframes fadeInUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(10px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+    .nav {
+      display: flex; 
+      flex-direction: column; 
+      gap: 8px;
+    }
+    .nav a {
+      display: flex; 
+      gap: 12px; 
+      align-items: center; 
+      padding: 10px 12px; 
+      border-radius: 10px; 
+      text-decoration: none;
+      color: var(--muted); 
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .nav a i {
+      width: 20px; 
+      text-align: center;
+    }
+    .nav a:hover {
+    color: #0d9488;
+      transform: translateX(4px);
+    }
+    .nav a.active {
+   background: var(--nav);
+    color: #0d9488;
+    border-right: 2px solid #0d9488;
+}
+   .logout-btn:hover {
+   background: var(--nav);
+    color: #0d9488;
+    border-right: 2px solid #0d9488;
+}
+    /* main & header */
+    .main {
+      display: flex; 
+      flex-direction: column; 
+      min-height: 100vh; 
+      background: transparent;
+    }
+    .header {
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between;
+      gap: 16px; 
+      padding: 14px 22px; 
+      background: var(--card); 
+      border-bottom: 1px solid var(--border);
+      position: sticky; 
+      top: 0; 
+      z-index: 6;
+    }
+    .header-left {
+      display: flex; 
+      align-items: center; 
+      gap: 12px;
+    }
+    .menu-toggle {
+      display: none; 
+      background: none; 
+      border: none; 
+      padding: 8px; 
+      border-radius: 8px; 
+      cursor: pointer; 
+      color: var(--muted);
+      transition: all 0.3s ease;
+    }
+    .menu-toggle:hover {
+      background: var(--primary-600);
+      color: white;
+    }
+
+    .header-right {
+      display: flex; 
+      align-items: center; 
+      gap: 12px;
+    }
+    .icon-btn {
+      background: transparent; 
+      border: 0; 
+      padding: 8px; 
+      border-radius: 8px; 
+      cursor: pointer; 
+      color: var(--muted);
+      transition: all 0.3s ease;
+    }
+    .icon-btn:hover {
+      background: var(--primary-600);
+      color: white;
+      transform: scale(1.05);
+    }
+    .profile {
+      position: relative; 
+      display: flex; 
+      align-items: center; 
+      gap: 10px; 
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+    .profile:hover {
+      background: var(--glass);
+    }
+    .avatar {
+      width: 38px; 
+      height: 38px; 
+      border-radius: 10px; 
+      background: linear-gradient(135deg, var(--accent-2), var(--accent)); 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      color: white; 
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+    .header-profile-name {
+      display: flex; 
+      flex-direction: column; 
+      align-items: flex-start;
+      font-weight: 700;
+      font-size: 16px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+    }
+    .dropdown {
+      position: absolute; 
+      right: 0; 
+      top: 56px; 
+      background: var(--card); 
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(2,6,23,0.06); 
+      border-radius: 10px; 
+      min-width: 180px; 
+      overflow: hidden; 
+      display: none;
+      z-index: 10;
+    }
+    .dropdown a {
+      display: block; 
+      padding: 10px 12px; 
+      text-decoration: none; 
+      color: var(--text); 
+      border-bottom: 1px dashed var(--border);
+      transition: all 0.3s ease;
+    }
+    .dropdown a:last-child {
+      border-bottom: none;
+    }
+    .dropdown a:hover {
+      background: var(--primary-600);
+      color: white;
+      padding-left: 16px;
+    }
+        /* Close button for sidebar */
+    .sidebar-close {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-close:hover {
+      color: var(--primary-600);
+      transform: scale(1.1);
+    }
+      /* responsive */
+    @media (max-width: 1024px){
+      .layout{grid-template-columns: 1fr}
+      .sidebar{
+        position: fixed;
+        left: -100%;
+        top: 0;
+        transition: left 0.3s ease;
+        z-index: 1001; /* Increased from 1000 to 1001 */
+        width: 260px;
+        height: 100%;
+      }
+      .sidebar.open{left: 0}
+      .menu-toggle{display: inline-block}
+      .sidebar-close{display: block}
+      .overlay.active{display: block}
+    }
+    
